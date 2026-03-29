@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Creasti</title>
+  <meta name="description" content="Get help with Creasti. FAQ, troubleshooting, and contact support." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --teal: #008C7A; --teal-light: #00C1A1; --teal-dark: #006B5E;
+      --mint: #F4FBF8; --text: #111827; --muted: #6B7280; --card: #FFFFFF;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--mint); color: var(--text); }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(244,251,248,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,140,122,0.08);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .nav-logo img { width: 36px; height: 36px; border-radius: 10px; object-fit: cover; }
+    .nav-logo-fallback {
+      width: 36px; height: 36px; background: var(--teal);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.1rem;
+    }
+    .nav-logo-text { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--teal); }
+    .nav-back { color: var(--muted); font-size: 0.9rem; text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--teal); }
+
+    .page-header {
+      background: var(--teal); padding: 4rem 1.5rem 3rem; text-align: center;
+    }
+    .page-header h1 {
+      font-family: 'Sora', sans-serif; font-size: 2.5rem; font-weight: 800;
+      color: white; letter-spacing: -0.02em;
+    }
+    .page-header p { color: rgba(255,255,255,0.75); margin-top: 0.75rem; font-size: 1rem; }
+
+    .content { max-width: 800px; margin: 3rem auto; padding: 0 1.5rem 5rem; }
+
+    /* Contact Cards */
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem; margin-bottom: 3rem;
+    }
+    .contact-card {
+      background: var(--card); border-radius: 16px; padding: 2rem;
+      border: 1px solid rgba(0,140,122,0.08);
+      text-align: center; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .contact-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,140,122,0.1); }
+    .contact-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+    .contact-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.4rem; }
+    .contact-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+    .contact-link {
+      display: inline-block; color: var(--teal); font-weight: 600; font-size: 0.9rem;
+      text-decoration: none; padding: 0.5rem 1.25rem;
+      border: 1.5px solid rgba(0,140,122,0.2); border-radius: 100px;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { background: var(--teal); color: white; border-color: var(--teal); }
+
+    /* FAQ */
+    .faq-section-title {
+      font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 800;
+      margin-bottom: 1.25rem; letter-spacing: -0.01em;
+    }
+    .faq-group { margin-bottom: 2.5rem; }
+    .faq-group-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 0.75rem; padding-bottom: 0.5rem;
+      border-bottom: 2px solid rgba(0,140,122,0.1);
+    }
+    .faq-item {
+      background: var(--card); border-radius: 12px; margin-bottom: 0.75rem;
+      border: 1px solid rgba(0,140,122,0.08); overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; text-align: left; background: none; border: none;
+      padding: 1.1rem 1.25rem; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+      color: var(--text); transition: background 0.15s;
+    }
+    .faq-question:hover { background: rgba(0,140,122,0.03); }
+    .faq-chevron { font-size: 0.8rem; color: var(--teal); transition: transform 0.25s; flex-shrink: 0; margin-left: 1rem; }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.2s;
+      padding: 0 1.25rem;
+    }
+    .faq-answer p {
+      font-size: 0.9rem; line-height: 1.7; color: #4B5563;
+      padding-bottom: 1.1rem;
+    }
+    .faq-answer a { color: var(--teal); text-decoration: none; }
+    .faq-answer a:hover { text-decoration: underline; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-item.open .faq-answer { max-height: 400px; }
+
+    /* Still need help */
+    .help-banner {
+      background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+      border-radius: 20px; padding: 2.5rem; text-align: center;
+      margin-top: 2rem;
+    }
+    .help-banner h3 {
+      font-family: 'Sora', sans-serif; font-size: 1.4rem; font-weight: 700;
+      color: white; margin-bottom: 0.5rem;
+    }
+    .help-banner p { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .help-banner a {
+      display: inline-block; background: white; color: var(--teal);
+      padding: 0.75rem 1.75rem; border-radius: 100px;
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .help-banner a:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+
+    footer {
+      background: var(--text); padding: 2.5rem 1.5rem; text-align: center;
+    }
+    .footer-logo { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--teal-light); margin-bottom: 1rem; }
+    .footer-links { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1rem; }
+    .footer-links a { color: rgba(255,255,255,0.5); font-size: 0.82rem; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--teal-light); }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="logo.png" alt="Creasti" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+      <div class="nav-logo-fallback" style="display:none;">🌱</div>
+      <span class="nav-logo-text">Creasti</span>
+    </a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </nav>
+
+  <div class="page-header">
+    <h1>Support Center</h1>
+    <p>We're here to help. Find answers below or reach out directly.</p>
+  </div>
+
+  <div class="content">
+
+    <!-- Contact Options -->
+    <div class="contact-grid" style="margin-top:0;">
+      <div class="contact-card">
+        <div class="contact-icon">📧</div>
+        <div class="contact-title">Email Support</div>
+        <div class="contact-desc">Get a response within 24 hours on business days.</div>
+        <a href="mailto:creasti.saving@gmail.com" class="contact-link">Send Email</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🍎</div>
+        <div class="contact-title">Download the App</div>
+        <div class="contact-desc">Free on the iOS App Store. Android coming soon.</div>
+        <a href="https://apps.apple.com/app/creasti/id6760953660" class="contact-link">App Store</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🏢</div>
+        <div class="contact-title">Employer Inquiries</div>
+        <div class="contact-desc">Interested in Creasti for your team? Let's talk.</div>
+        <a href="employers.html#request-demo" class="contact-link">Request Demo</a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section-title">Frequently Asked Questions</div>
+
+    <!-- Getting Started -->
+    <div class="faq-group">
+      <div class="faq-group-label">Getting Started</div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I create my first savings goal?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>After signing up, tap <strong>Add Goal</strong> on the dashboard. Give your goal a name (e.g., "Emergency Fund"), set a target amount and a due date, then tap Save. Your goal will appear on your dashboard immediately. Tap <strong>Deposit</strong> on any goal to make your first contribution and start your streak.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is Creasti free to use?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes — the core Creasti experience is completely free. You can create goals, make deposits, earn XP and streaks, use the AI coach, and join family circles at no cost. A premium tier with advanced features is coming soon.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Does Creasti connect to my bank account?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Not currently. Creasti is a habit and tracking app — you record your savings manually. Bank linking via Plaid for automatic deposit tracking is on our roadmap. For now, you stay in full control of what you enter.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Can I sign in with Google or Apple?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Creasti supports Sign in with Google and Sign in with Apple in addition to email and password. All three options are available on the login and signup screens.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Streaks & XP -->
+    <div class="faq-group">
+      <div class="faq-group-label">Streaks & XP</div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I start a streak?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Make a deposit to any goal — even $1 counts. Your streak starts the moment you make your first deposit and increments each day you make at least one deposit. The streak resets if you go a full day without depositing.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What is the Savings Health Score?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Your Savings Health Score is a number from 0 to 850 that reflects four components: Consistency (30%), Progress toward goals (30%), Deposit Frequency (20%), and Momentum (20%). Think of it like a credit score for your savings habits — higher is better. Tap <strong>What's this?</strong> on the dashboard to see your full breakdown.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How is XP calculated?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>You earn XP for every deposit you make, for maintaining your streak, and for hitting milestones. XP accumulates over time and contributes to your Savings Health Score. There's no limit — the more consistently you save, the more XP you earn.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Coach -->
+    <div class="faq-group">
+      <div class="faq-group-label">AI Coach</div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How does the AI coach work?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>The Creasti coach is powered by Claude (Anthropic's AI). It receives your actual savings data — your health score, streak, XP, goals, and spending context — so its advice is personalized to you, not generic. Ask it anything: "Should I increase my weekly deposit?", "How do I build an emergency fund?", or "What's hurting my health score?"</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Does the coach remember previous conversations?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. The coach stores a memory summary that persists across sessions. Over time it learns your tone preferences, goals, and savings patterns. The longer you use Creasti, the more personalized the coaching becomes.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account -->
+    <div class="faq-group">
+      <div class="faq-group-label">Account & Privacy</div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I delete my account?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Go to your Profile tab → Settings → Delete Account. You'll be asked to confirm. Account deletion is processed within 30 days and removes all your personal data from our servers. You can also email us at <a href="mailto:creasti.saving@gmail.com">creasti.saving@gmail.com</a> to request deletion.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          I didn't receive my verification email. What do I do?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>First, check your spam or junk folder — verification emails sometimes land there. If it's not there, go back to the verification screen in the app and tap <strong>Resend email</strong>. If you still don't receive it after 5 minutes, contact us and we'll help you verify manually.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Is my financial data secure?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Your data is stored in Google Firebase with security rules that allow only your authenticated account to access it. All data is transmitted over encrypted HTTPS connections. We never sell your data. See our <a href="privacy.html">Privacy Policy</a> for full details.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Family Circles -->
+    <div class="faq-group">
+      <div class="faq-group-label">Family Circles</div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I create a Family Circle?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Tap the <strong>Challenges</strong> tab, then find the Family Circle section. Tap <strong>Create Circle</strong>, give it a name, and invite family members by sharing your circle code or invite link. Once they join, you'll see each other's streaks and progress on the leaderboard.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          What can family members see?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <p>Family circle members can see each other's savings streak, XP, and health score on the leaderboard. They cannot see the specific dollar amounts in your goals unless you share a joint goal. You control who you invite to your circle.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Still need help -->
+    <div class="help-banner">
+      <h3>Still need help?</h3>
+      <p>Our support team responds within 24 hours on business days.</p>
+      <a href="mailto:creasti.saving@gmail.com">Email creasti.saving@gmail.com</a>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-logo">🌱 Creasti</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="employers.html">For Employers</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="support.html">Support</a>
+      <a href="mailto:creasti.saving@gmail.com">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 Creasti. Built at CSU. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>
