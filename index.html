@@ -51,12 +51,10 @@
       display: flex; align-items: center; gap: 0.6rem;
       text-decoration: none;
     }
-    .nav-logo-icon {
+    .nav-logo-img {
       width: 36px; height: 36px;
-      background: var(--teal);
       border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+      object-fit: cover;
     }
     .nav-logo-text {
       font-family: 'Sora', sans-serif;
@@ -541,7 +539,7 @@
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="/">
-      <div class="nav-logo-icon">&#127793;</div>
+      <img src="logo.png" alt="Creasti" class="nav-logo-img" />
       <span class="nav-logo-text">Creasti</span>
     </a>
     <div class="nav-links">
@@ -767,7 +765,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">&#127793; Creasti</div>
+    <div class="footer-logo"><img src="logo.png" alt="Creasti" style="width:24px;height:24px;border-radius:6px;vertical-align:middle;margin-right:6px;" />Creasti</div>
     <div class="footer-links">
       <a href="/">Home</a>
       <a href="employers.html">For Employers</a>
