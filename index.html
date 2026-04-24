@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Creasti — The Duolingo of Saving</title>
-  <meta name="description" content="Creasti turns saving money into a habit you actually stick to. Goals, streaks, AI coach, and family accountability. Free on the App Store." />
+  <meta name="description" content="Creasti turns saving money into a habit you actually stick to. Goals, streaks, AI coach, and family accountability. Award-winning. Free on the App Store." />
   <meta property="og:title" content="Creasti — The Duolingo of Saving" />
-  <meta property="og:description" content="Gamified savings with an AI coach that actually knows you. Live on the App Store." />
+  <meta property="og:description" content="Award-winning behavioral savings app. Streaks, AI coach, family circles. Free on iOS." />
   <meta property="og:image" content="https://creasti.com/og-image.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://creasti.com" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <style>
@@ -23,7 +26,7 @@
       --muted:      #6B7280;
       --accent:     #00C3FF;
       --card:       #FFFFFF;
-      --error:      #E95454;
+      --gold:       #F59E0B;
     }
 
     html { scroll-behavior: smooth; }
@@ -48,7 +51,7 @@
       display: flex; align-items: center; gap: 0.6rem;
       text-decoration: none;
     }
-    .logo.png {
+    .nav-logo-icon {
       width: 36px; height: 36px;
       background: var(--teal);
       border-radius: 10px;
@@ -89,6 +92,24 @@
       background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,193,161,0.12) 0%, transparent 70%),
                   radial-gradient(ellipse 40% 40% at 80% 80%, rgba(0,195,255,0.06) 0%, transparent 60%);
     }
+
+    /* Awards banner */
+    .awards-banner {
+      display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; justify-content: center;
+      margin-bottom: 1.75rem;
+      position: relative; z-index: 1;
+      animation: fadeUp 0.6s ease both;
+    }
+    .award-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(245,158,11,0.06));
+      border: 1px solid rgba(245,158,11,0.3);
+      color: #92400E; font-size: 0.78rem; font-weight: 600;
+      padding: 0.4rem 1rem; border-radius: 100px;
+      letter-spacing: 0.01em;
+    }
+    .award-pill span.trophy { font-size: 0.9rem; }
+
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
       background: rgba(0,140,122,0.08);
@@ -96,7 +117,7 @@
       color: var(--teal); font-size: 0.8rem; font-weight: 600;
       padding: 0.35rem 1rem; border-radius: 100px;
       margin-bottom: 1.5rem; position: relative; z-index: 1;
-      animation: fadeUp 0.6s ease both;
+      animation: fadeUp 0.6s 0.05s ease both;
     }
     .badge-dot {
       width: 6px; height: 6px; border-radius: 50%;
@@ -162,46 +183,91 @@
       border-color: var(--teal);
       background: rgba(0,140,122,0.04);
     }
-    .hero-stats {
+
+    /* Hero trust strip — replaces raw metrics */
+    .hero-trust {
       margin-top: 3.5rem;
-      display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: center;
+      display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; justify-content: center;
       position: relative; z-index: 1;
       animation: fadeUp 0.6s 0.4s ease both;
     }
-    .stat { text-align: center; }
-    .stat-num {
-      font-family: 'Sora', sans-serif;
-      font-size: 1.8rem; font-weight: 800;
-      color: var(--teal);
+    .trust-item {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.85rem; color: var(--muted); font-weight: 500;
     }
-    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+    .trust-item .check {
+      color: var(--teal); font-weight: 700; font-size: 1rem;
+    }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── FEATURES ── */
-    .section {
-      padding: 5rem 1.5rem;
+    /* ── APP PREVIEW ── */
+    .preview-section {
+      padding: 4rem 1.5rem 5rem;
       max-width: 1100px; margin: 0 auto;
+      text-align: center;
     }
-    .section-tag {
+    .preview-section .section-tag {
       font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
       text-transform: uppercase; color: var(--teal);
       margin-bottom: 0.75rem;
     }
-    .section-title {
+    .preview-section .section-title {
       font-family: 'Sora', sans-serif;
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 800; line-height: 1.15;
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
     }
-    .section-sub {
+    .preview-section .section-sub {
       font-size: 1rem; color: var(--muted); line-height: 1.7;
-      max-width: 480px; margin-bottom: 3rem;
+      max-width: 520px; margin: 0 auto 3rem;
     }
+    .phone-strip {
+      display: flex; gap: 1.5rem; justify-content: center;
+      flex-wrap: wrap;
+    }
+    .phone-frame {
+      width: 240px;
+      background: var(--card);
+      border-radius: 28px;
+      padding: 10px;
+      border: 1px solid rgba(0,140,122,0.1);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+    .phone-frame:hover { transform: translateY(-6px); }
+    .phone-frame img {
+      width: 100%; border-radius: 20px;
+      display: block;
+    }
+    .phone-placeholder {
+      width: 100%; aspect-ratio: 9/19.5;
+      border-radius: 20px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.85rem; color: var(--muted);
+    }
+    .phone-placeholder .ph-icon { font-size: 2rem; }
+    .phone-placeholder .ph-label {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700; font-size: 0.8rem;
+      color: var(--text);
+    }
+    .phone-placeholder .ph-desc {
+      font-size: 0.72rem; color: var(--muted);
+      max-width: 160px; line-height: 1.4;
+    }
+
+    /* Placeholder backgrounds */
+    .ph-dashboard { background: linear-gradient(180deg, #E8F8F5 0%, #F4FBF8 100%); }
+    .ph-streak { background: linear-gradient(180deg, #FEF3C7 0%, #FFFBEB 100%); }
+    .ph-coach { background: linear-gradient(180deg, #EDE9FE 0%, #F5F3FF 100%); }
+    .ph-report { background: linear-gradient(180deg, #DBEAFE 0%, #EFF6FF 100%); }
 
     /* ── MECHANISMS ── */
     .mechanisms {
@@ -211,14 +277,28 @@
     .mechanisms-inner {
       max-width: 1100px; margin: 0 auto;
     }
-    .mechanisms .section-tag { color: var(--teal-light); }
-    .mechanisms .section-title { color: white; }
-    .mechanisms .section-sub { color: rgba(255,255,255,0.6); }
+    .mechanisms .section-tag {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 0.75rem;
+    }
+    .mechanisms .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: white;
+      margin-bottom: 1rem;
+    }
+    .mechanisms .section-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.7;
+      max-width: 480px; margin-bottom: 3rem;
+    }
     .mechs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      margin-top: 3rem;
     }
     .mech-card {
       background: rgba(255,255,255,0.06);
@@ -230,9 +310,7 @@
       transform: translateY(-4px);
       background: rgba(255,255,255,0.1);
     }
-    .mech-icon {
-      font-size: 2rem; margin-bottom: 1rem;
-    }
+    .mech-icon { font-size: 2rem; margin-bottom: 1rem; }
     .mech-title {
       font-family: 'Sora', sans-serif;
       font-size: 1.15rem; font-weight: 700;
@@ -243,7 +321,76 @@
       line-height: 1.65;
     }
 
+    /* ── LOOP ── */
+    .loop-section {
+      background: var(--white);
+      padding: 5rem 1.5rem;
+    }
+    .loop-inner { max-width: 1100px; margin: 0 auto; }
+    .loop-inner .section-tag {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    .loop-inner .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .loop-inner .section-sub {
+      font-size: 1rem; color: var(--muted); line-height: 1.7;
+      max-width: 480px; margin-bottom: 3rem;
+    }
+    .loop-steps {
+      display: flex; gap: 0; flex-wrap: wrap;
+      position: relative;
+    }
+    .loop-step {
+      flex: 1; min-width: 120px;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; position: relative;
+    }
+    .loop-step:not(:last-child)::after {
+      content: ''; position: absolute;
+      right: -0.5rem; top: 1.3rem;
+      width: 16px; height: 2px;
+      background: var(--teal-light);
+    }
+    .loop-num {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      color: white; font-family: 'Sora', sans-serif;
+      font-weight: 800; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 4px 16px rgba(0,140,122,0.3);
+    }
+    .loop-label { font-size: 0.8rem; font-weight: 600; color: var(--text); }
+    .loop-sub { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+
     /* ── FEATURES GRID ── */
+    .section {
+      padding: 5rem 1.5rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .section .section-tag {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    .section .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .section .section-sub {
+      font-size: 1rem; color: var(--muted); line-height: 1.7;
+      max-width: 480px; margin-bottom: 3rem;
+    }
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -275,50 +422,28 @@
       line-height: 1.6;
     }
 
-    /* ── LOOP ── */
-    .loop-section {
-      background: var(--white);
-      padding: 5rem 1.5rem;
-    }
-    .loop-inner { max-width: 1100px; margin: 0 auto; }
-    .loop-steps {
-      display: flex; gap: 0; flex-wrap: wrap;
-      margin-top: 3rem; position: relative;
-    }
-    .loop-step {
-      flex: 1; min-width: 120px;
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; position: relative;
-    }
-    .loop-step:not(:last-child)::after {
-      content: '→';
-      position: absolute; right: -0.75rem; top: 1.1rem;
-      color: var(--teal-light); font-size: 1.2rem;
-    }
-    .loop-num {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), var(--teal-light));
-      color: white; font-family: 'Sora', sans-serif;
-      font-weight: 800; font-size: 1.1rem;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 0.75rem;
-      box-shadow: 0 4px 16px rgba(0,140,122,0.3);
-    }
-    .loop-label {
-      font-size: 0.8rem; font-weight: 600; color: var(--text);
-    }
-    .loop-sub { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
-
     /* ── SOCIAL PROOF ── */
     .social-section {
       padding: 5rem 1.5rem;
       max-width: 1100px; margin: 0 auto;
       text-align: center;
     }
+    .social-section .section-tag {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    .social-section .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
     .quotes-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem; margin-top: 3rem; text-align: left;
+      gap: 1.25rem; text-align: left;
     }
     .quote-card {
       background: var(--card);
@@ -404,6 +529,10 @@
       .nav-links { display: none; }
       .loop-step:not(:last-child)::after { display: none; }
       .loop-steps { gap: 1.5rem; }
+      .phone-strip { gap: 1rem; }
+      .phone-frame { width: 160px; }
+      .awards-banner { gap: 0.5rem; }
+      .award-pill { font-size: 0.7rem; padding: 0.3rem 0.75rem; }
     }
   </style>
 </head>
@@ -412,14 +541,14 @@
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="/">
-      <img src="logo.png" alt="Creasti" style="width:36px;height:36px;border-radius:10px;object-fit:cover;" />
+      <div class="nav-logo-icon">&#127793;</div>
       <span class="nav-logo-text">Creasti</span>
     </a>
     <div class="nav-links">
       <a href="#how-it-works">How it works</a>
       <a href="#features">Features</a>
       <a href="employers.html">For Employers</a>
-      <a href="privacy.html">Privacy</a>
+      <a href="support.html">Support</a>
       <a href="https://apps.apple.com/app/creasti/id6760953660" class="nav-cta">Download Free</a>
     </div>
   </nav>
@@ -427,36 +556,60 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
+
+    <!-- Awards -->
+    <div class="awards-banner">
+      <div class="award-pill">
+        <span class="trophy">&#127942;</span> Impact Award — CSU I4E Startup Showcase 2026
+      </div>
+      <div class="award-pill">
+        <span class="trophy">&#127942;</span> Excellence in Social Innovation — CSU Demo Day 2026
+      </div>
+    </div>
+
     <div class="hero-badge">
       <span class="badge-dot"></span>
       Now live on the App Store
     </div>
+
     <h1>The <em>Duolingo</em><br/>of Saving Money</h1>
-    <p class="hero-sub">Creasti turns saving into a daily habit through streaks, an AI coach that knows you, and family accountability circles.</p>
+    <p class="hero-sub">Creasti turns saving into a daily habit through streaks, an AI coach that knows you, and family accountability circles. Built for young adults who want to build real wealth habits.</p>
+
     <div class="hero-actions">
       <a href="https://apps.apple.com/app/creasti/id6760953660" class="btn-primary">
-        🍎 Download Free on iOS
+        &#63743; Download Free on iOS
       </a>
       <a href="#how-it-works" class="btn-secondary">
-        See how it works →
+        See how it works &#8594;
       </a>
     </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">28+</div>
-        <div class="stat-label">Beta testers</div>
+
+    <!-- Trust strip instead of raw metrics -->
+    <div class="hero-trust">
+      <div class="trust-item"><span class="check">&#10003;</span> Free to start</div>
+      <div class="trust-item"><span class="check">&#10003;</span> No bank linking required</div>
+      <div class="trust-item"><span class="check">&#10003;</span> AI-powered coaching</div>
+      <div class="trust-item"><span class="check">&#10003;</span> Award-winning at CSU</div>
+    </div>
+  </section>
+
+  <!-- APP PREVIEW -->
+  <section class="preview-section" id="preview">
+    <div class="section-tag">See it in action</div>
+    <h2 class="section-title">Your Dashboard. Your Progress.</h2>
+    <p class="section-sub">Track your Savings Health Score, build streaks, get personalized coaching, and share monthly reports with family.</p>
+    <div class="phone-strip">
+      <div class="phone-frame">
+        <img src="screenshot-dashboard.png" alt="Creasti Dashboard — Savings Health Score, streaks, and feature cards" />
       </div>
-      <div class="stat">
-        <div class="stat-num">14.3%</div>
-        <div class="stat-label">Day-1 retention</div>
+      <div class="phone-frame">
+        <img src="screenshot-celebration.png" alt="Goal Completed celebration with confetti, XP earned, and share button" />
       </div>
-      <div class="stat">
-        <div class="stat-num">0</div>
-        <div class="stat-label">Crashes reported</div>
+      <div class="phone-frame">
+        <img src="screenshot-coach.png" alt="AI Coach with weekly recap, deposit actions, and weekly savings plan" />
       </div>
-      <div class="stat">
-        <div class="stat-num">Free</div>
-        <div class="stat-label">To get started</div>
+      <div class="phone-frame">
+        <img src="screenshot-insights.png" alt="Insights screen with health score, streak progress, and spending analysis" />
       </div>
     </div>
   </section>
@@ -465,21 +618,21 @@
   <section class="mechanisms" id="how-it-works">
     <div class="mechanisms-inner">
       <div class="section-tag">Why it works</div>
-      <h2 class="section-title" style="color:white;">3 Mechanisms That<br/>Change Behavior</h2>
+      <h2 class="section-title">3 Mechanisms That<br/>Change Behavior</h2>
       <p class="section-sub">Most apps track money. Creasti changes what you do with it.</p>
       <div class="mechs-grid">
         <div class="mech-card">
-          <div class="mech-icon">🔥</div>
+          <div class="mech-icon">&#128293;</div>
           <div class="mech-title">Streak + Loss Aversion</div>
           <div class="mech-desc">A 15-day saving streak is worth protecting. Users make deposits at 11pm just to keep it alive. This is exactly how Duolingo built a $6B habit.</div>
         </div>
         <div class="mech-card">
-          <div class="mech-icon">🧠</div>
+          <div class="mech-icon">&#129504;</div>
           <div class="mech-title">AI Coach with Memory</div>
           <div class="mech-desc">Your coach remembers your goals, behavior, and tone. It gets smarter about you specifically over time. Switching costs grow with every conversation.</div>
         </div>
         <div class="mech-card">
-          <div class="mech-icon">👨‍👩‍👧</div>
+          <div class="mech-icon">&#128104;&#8205;&#128105;&#8205;&#128103;</div>
           <div class="mech-title">Family Circle Accountability</div>
           <div class="mech-desc">When your family tracks each other's savings progress, you don't quit. Social graphs create multi-user lock-in and motivation that lasts.</div>
         </div>
@@ -520,7 +673,7 @@
           <div class="loop-sub">With your circle</div>
         </div>
         <div class="loop-step">
-          <div class="loop-num">↻</div>
+          <div class="loop-num">&#8635;</div>
           <div class="loop-label">Repeat</div>
           <div class="loop-sub">Habit formed</div>
         </div>
@@ -535,44 +688,44 @@
     <p class="section-sub">Every feature earns its place in the loop.</p>
     <div class="features-grid">
       <div class="feat-card">
-        <div class="feat-icon">🎯</div>
+        <div class="feat-icon">&#127919;</div>
         <div class="feat-title">Savings Goals</div>
-        <div class="feat-desc">Create goals for anything — emergency fund, vacation, education. Track progress with visual bars and AI-powered predictions.</div>
+        <div class="feat-desc">Create goals for anything &#8212; emergency fund, vacation, education. Track progress with visual bars and AI-powered predictions.</div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon">⚡</div>
+        <div class="feat-icon">&#9889;</div>
         <div class="feat-title">XP + Streaks</div>
         <div class="feat-desc">Earn experience points for every deposit. Build streaks. Hit milestones. Saving feels like leveling up.</div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon">🧠</div>
+        <div class="feat-icon">&#129504;</div>
         <div class="feat-title">AI Savings Coach</div>
-        <div class="feat-desc">Ask anything about your money. Your coach uses your actual score, streak, and spending data to give real advice — not generic tips.</div>
+        <div class="feat-desc">Ask anything about your money. Your coach uses your actual score, streak, and spending data to give real advice &#8212; not generic tips.</div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon">📊</div>
+        <div class="feat-icon">&#128202;</div>
         <div class="feat-title">Savings Health Score</div>
         <div class="feat-desc">A single score out of 850 that reflects your consistency, progress, frequency, and momentum. Your financial fitness number.</div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon">🧾</div>
-        <div class="feat-title">Expense Tracker</div>
-        <div class="feat-desc">Scan receipts, add manual expenses, set monthly budgets per category. See exactly where your money goes.</div>
+        <div class="feat-icon">&#128203;</div>
+        <div class="feat-title">Monthly PDF Report</div>
+        <div class="feat-desc">Generate a professional savings report to share with parents, advisors, or keep for your records. Health score, goals, spending breakdown.</div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon">👨‍👩‍👧</div>
-        <div class="feat-title">Family Circles</div>
-        <div class="feat-desc">Invite family to a shared savings circle. Live leaderboard, shared goals, and mutual accountability that actually works.</div>
+        <div class="feat-icon">&#128104;&#8205;&#128105;&#8205;&#128103;</div>
+        <div class="feat-title">Family &amp; Group Circles</div>
+        <div class="feat-desc">Create savings circles for family, friends, or events. Live leaderboard, shared goals, and mutual accountability.</div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon">🔔</div>
-        <div class="feat-title">Smart Notifications</div>
-        <div class="feat-desc">Streak reminders, weekly recaps, milestone celebrations. Delivered at the right moment to keep you on track.</div>
+        <div class="feat-icon">&#128218;</div>
+        <div class="feat-title">Learn &amp; Earn</div>
+        <div class="feat-desc">15 financial literacy lessons across 6 tracks. Complete quizzes to unlock XP boosts. Education that pays off.</div>
       </div>
       <div class="feat-card">
-        <div class="feat-icon">🏆</div>
+        <div class="feat-icon">&#127942;</div>
         <div class="feat-title">Challenges + Boosts</div>
-        <div class="feat-desc">Weekly challenges, XP boosts, and community milestones. Saving is more fun when there's a game inside it.</div>
+        <div class="feat-desc">Weekly challenges, activatable XP boosts, and milestone celebrations. Saving is more fun when there's a game inside it.</div>
       </div>
     </div>
   </section>
@@ -583,19 +736,19 @@
     <h2 class="section-title">CSU Students Are Already Saving</h2>
     <div class="quotes-grid">
       <div class="quote-card">
-        <div class="quote-stars">★★★★★</div>
+        <div class="quote-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <div class="quote-text">"I've tried every budgeting app. This is the first one that actually made me want to open it every day."</div>
-        <div class="quote-author">— CSU Beta Tester</div>
+        <div class="quote-author">&#8212; CSU Beta Tester</div>
       </div>
       <div class="quote-card">
-        <div class="quote-stars">★★★★★</div>
+        <div class="quote-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <div class="quote-text">"The AI coach gave me advice based on my actual streak and score. It felt like talking to someone who knew me."</div>
-        <div class="quote-author">— CSU Beta Tester</div>
+        <div class="quote-author">&#8212; CSU Beta Tester</div>
       </div>
       <div class="quote-card">
-        <div class="quote-stars">★★★★★</div>
+        <div class="quote-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <div class="quote-text">"Creating a goal and making my first deposit took under 2 minutes. Everything went smoothly."</div>
-        <div class="quote-author">— CSU Beta Tester</div>
+        <div class="quote-author">&#8212; CSU Beta Tester</div>
       </div>
     </div>
   </section>
@@ -605,24 +758,24 @@
     <h2>Start Your Savings Streak Today</h2>
     <p>Free to download. No credit card. No bank linking required to start.<br/>Just you, a goal, and a $1 deposit.</p>
     <a href="https://apps.apple.com/app/creasti/id6760953660" class="btn-white">
-      🍎 &nbsp;Download Free on the App Store
+      &#63743; &nbsp;Download Free on the App Store
     </a>
     <div class="appstore-badge">
-      <span>Available on iOS · Android coming soon</span>
+      <span>Available on iOS &#183; Android coming soon</span>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">🌱 Creasti</div>
+    <div class="footer-logo">&#127793; Creasti</div>
     <div class="footer-links">
       <a href="/">Home</a>
       <a href="employers.html">For Employers</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="support.html">Support</a>
-      <a href="mailto:creasti>saving@gmail.com">Contact</a>
+      <a href="mailto:creasti.saving@gmail.com">Contact</a>
     </div>
-    <div class="footer-copy">© 2026 Creasti. Built at CSU. All rights reserved.</div>
+    <div class="footer-copy">&copy; 2026 Creasti. Built at CSU. All rights reserved.</div>
   </footer>
 
 </body>
